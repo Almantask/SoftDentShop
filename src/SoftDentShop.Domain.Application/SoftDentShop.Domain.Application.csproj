@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoftDentShop.Domain.Models\SoftDentShop.Domain.Models.csproj" />
+  </ItemGroup>
+
 </Project>
