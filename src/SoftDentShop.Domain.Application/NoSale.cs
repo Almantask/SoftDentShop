@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftDentShop.Domain.Models
+namespace SoftDentShop.Domain.Models.Shop
 {
     public class NoSale : ISaleStrategy
     {

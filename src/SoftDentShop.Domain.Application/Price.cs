@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftDentShop.Domain.Models
+namespace SoftDentShop.Domain.Models.Shop
 {
     class Price:IPrice
     {
@@ -12,7 +12,9 @@ namespace SoftDentShop.Domain.Models
         public Price(decimal basePrice)
         {
             BasePrice = basePrice;
+#pragma warning disable CS0436 // Type conflicts with imported type
             OngoingSale = new NoSale();
+#pragma warning restore CS0436 // Type conflicts with imported type
         }
 
         public Price(decimal basePrice, ISaleStrategy salesStrategy)
