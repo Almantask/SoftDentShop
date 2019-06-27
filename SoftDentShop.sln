@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Application.Tests", "tests\SoftDentShop.Domain.Application.Tests\SoftDentShop.Domain.Application.Tests.csproj", "{9A390D93-9B3E-407A-A18B-1EC037C96D44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftdentShop.Presentation.StockMonitorConsole", "SoftdentShop.Presentation.StockMonitorConsole\SoftdentShop.Presentation.StockMonitorConsole.csproj", "{966851F7-8A85-48D2-A308-8515A0798C33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{9A390D93-9B3E-407A-A18B-1EC037C96D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A390D93-9B3E-407A-A18B-1EC037C96D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A390D93-9B3E-407A-A18B-1EC037C96D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966851F7-8A85-48D2-A308-8515A0798C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966851F7-8A85-48D2-A308-8515A0798C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966851F7-8A85-48D2-A308-8515A0798C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966851F7-8A85-48D2-A308-8515A0798C33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{EDE0CE49-0E96-4778-A538-D74A9489B4BE} = {393169D7-2625-45C6-BDEC-DA82DBD4648A}
 		{CBB25FB4-F2BD-409B-80E1-274098548507} = {B4C3AB75-32E5-4E2D-89BB-2D35526C21E5}
 		{9A390D93-9B3E-407A-A18B-1EC037C96D44} = {B4C3AB75-32E5-4E2D-89BB-2D35526C21E5}
+		{966851F7-8A85-48D2-A308-8515A0798C33} = {00FCFC0E-3E2E-4D39-B1A0-B07B0CA16F6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1265C314-F8BC-423C-81A0-3FC6E07379AF}

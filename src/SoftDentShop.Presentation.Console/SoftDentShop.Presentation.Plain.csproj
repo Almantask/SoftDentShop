@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>SoftDentShop.Presentation.Plain</AssemblyName>
+    <RootNamespace>SoftDentShop.Presentation.Plain</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.csproj" />
+  </ItemGroup>
+
+</Project>
