@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SoftDentShop.Domain.Models.StockRates
 {
-    public class StockRatesFull
+    public class StockRateFull
     {
         [JsonProperty("Meta Data")]
         public StockRatesMetadata MetaData { get; set; }

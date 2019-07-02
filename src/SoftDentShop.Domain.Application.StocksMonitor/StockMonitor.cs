@@ -3,6 +3,7 @@ using SoftDentShop.Domain.Models.StockRates;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SoftDentShop.Domain.Application.StockMonitor
@@ -16,7 +17,7 @@ namespace SoftDentShop.Domain.Application.StockMonitor
 
         private static Dictionary<StockTimeScale, string> TimeScaleMap;
         private static HttpClient _client;
-        
+
         static StocksMonitor()
         {
             TimeScaleMap = new Dictionary<StockTimeScale, string>
@@ -30,18 +31,41 @@ namespace SoftDentShop.Domain.Application.StockMonitor
             _client = new HttpClient();
         }
 
-        public async Task<StockRatesFull> GetStockInfo(string stockCode, StockTimeScale timeScale)
+        public async Task<StockRateFull> GetStockInfoAsync(string stockCode, StockTimeScale timeScale, CancellationToken token)
         {
-            var endpoint = AdjustEndpoint(stockCode, timeScale);
-            var response = await _client.GetAsync(endpoint);
-
-            StockRatesFull stocks = new StockRatesFull();
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                stocks = JsonConvert.DeserializeObject<StockRatesFull>(json);
+                StockRequested?.Invoke(this, new OnStockRequestedEventArgs(stockCode));
+
+                var endpoint = AdjustEndpoint(stockCode, timeScale);
+                var response = await _client.GetAsync(endpoint, token);
+
+                StockRateFull stocks = new StockRateFull();
+                if (response.IsSuccessStatusCode)
+                {
+
+                    // What does content contain initially if not string?
+                    var json = await response.Content.ReadAsStringAsync();
+                    stocks = JsonConvert.DeserializeObject<StockRateFull>(json);
+                    if (stocks.MetaData == null)
+                    {
+                        throw new HttpRequestException(json);
+                    }
+                }
+                else
+                {
+                    throw new HttpRequestException($"Server returned {response.StatusCode}");
+                }
+
+                StockRetrieved?.Invoke(this, new OnStockRetrievedEventArgs(stocks));
+                return stocks;
+
             }
-            return stocks;
+            catch (HttpRequestException e)
+            {
+                throw e;
+            }
+
         }
 
         private string AdjustEndpoint(string stockCode, StockTimeScale timeScale)
@@ -50,11 +74,11 @@ namespace SoftDentShop.Domain.Application.StockMonitor
             const string endpointMinutes = @"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={0}&interval={1}min&outputsize=full&apikey={2}";
 
             var adjustedEndpoint = "";
-            if(timeScale == StockTimeScale.Hourly)
+            if (timeScale == StockTimeScale.Hourly)
             {
                 adjustedEndpoint = string.Format(endpointMinutes, stockCode, 60, APIKey);
             }
-            else if(timeScale == StockTimeScale.Minutely)
+            else if (timeScale == StockTimeScale.Minutely)
             {
                 adjustedEndpoint = string.Format(endpointMinutes, stockCode, 1, APIKey);
             }

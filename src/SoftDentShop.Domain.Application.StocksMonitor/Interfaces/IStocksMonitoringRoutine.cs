@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SoftDentShop.Domain.Application.StockMonitor
 {
@@ -7,7 +8,7 @@ namespace SoftDentShop.Domain.Application.StockMonitor
         event EventHandler<OnStockReportEndedEventArgs> ReportingEnded;
         event EventHandler<OnStockReportStartedEventArgs> ReportingStarted;
 
-        void Start();
+        Task Start();
         void Stop();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using SoftDentShop.Domain.Models.StockRates;
 
@@ -9,6 +10,6 @@ namespace SoftDentShop.Domain.Application.StockMonitor
         event EventHandler<OnStockRequestedEventArgs> StockRequested;
         event EventHandler<OnStockRetrievedEventArgs> StockRetrieved;
 
-        Task<StockRatesFull> GetStockInfo(string stockCode, StockTimeScale timeScale);
+        Task<StockRateFull> GetStockInfoAsync(string stockCode, StockTimeScale timeScale, CancellationToken token);
     }
 }

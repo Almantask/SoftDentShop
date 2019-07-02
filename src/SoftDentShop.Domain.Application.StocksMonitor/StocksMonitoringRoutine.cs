@@ -12,7 +12,6 @@ namespace SoftDentShop.Domain.Application.StockMonitor
         public event EventHandler<OnStockReportStartedEventArgs> ReportingStarted;
         public event EventHandler<OnStockReportEndedEventArgs> ReportingEnded;
 
-        private Task _ongoingStockReport;
         private IDictionary<string, Dictionary<DateTime, StockRate>> _stockRatesFullHistory;
 
         private readonly IStocksMonitor _monitor;
@@ -35,7 +34,7 @@ namespace SoftDentShop.Domain.Application.StockMonitor
                 {StockTimeScale.Hourly, 60 * 60},
                 {StockTimeScale.Daily, 24 * 60 * 60},
                 {StockTimeScale.Weekly, 7 * 24 * 60 * 60},
-                {StockTimeScale.Monthly, 4 * 7 * 24 * 3600},
+                {StockTimeScale.Monthly, 3},
             };
         }
 
@@ -48,57 +47,58 @@ namespace SoftDentShop.Domain.Application.StockMonitor
             _timeScale = timeScale;
         }
 
-        public void Start()
+        public async Task Start()
         {
+            ReportingStarted?.Invoke(this, new OnStockReportStartedEventArgs(DateTime.Now));
             if(_cancellationToken != null)
             {
                 throw new StockReportingAlreadyStartedException();
             }
             _cancellationToken = new CancellationTokenSource();
-            _ongoingStockReport = PeriodicStockUpdateAsync(new TimeSpan(0, 0, 1, 0, 0), _cancellationToken);
+            await PeriodicStockUpdateAsync(new TimeSpan(0, 0, 0, _timeScaleMapping[_timeScale] / 30), _cancellationToken);
         }
 
         public void Stop()
         {
             _cancellationToken.Cancel();
+            ReportingEnded?.Invoke(this, new OnStockReportEndedEventArgs(_stockRatesFullHistory));
         }
 
         public async Task PeriodicStockUpdateAsync(TimeSpan interval, CancellationTokenSource cancellationToken)
         {
             while (true)
             {
-                await UpdateStocksAsync();
-                await Task.Delay(interval, cancellationToken.Token);
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
+
+                await LoadStockAsync();
+                await Task.Delay(interval);
             };
         }
 
-        private async Task UpdateStocksAsync()
+        private async Task LoadStockAsync()
         {
-            var stockRatesFull = await _reporter.GetStockRatesAsync(_stockSymbols);
+            var stockRatesFull = await _reporter.GetStockRatesAsync(_stockSymbols, _cancellationToken.Token);
             foreach (var stockRateFull in stockRatesFull)
             {
-                UpdateHistory(stockRateFull);
+                AddToStockHistory(stockRateFull);
             }
         }
 
-        private void UpdateHistory(StockRatesFull stockRateFull)
+        private void AddToStockHistory(StockRateFull stockRateFull)
         {
             var stockSymbol = stockRateFull.MetaData.StockCode;
             var stockRates = stockRateFull.StockRates;
             if (_stockRatesFullHistory.ContainsKey(stockSymbol))
             {
-                foreach (var stockRate in stockRates)
-                {
-                    _stockRatesFullHistory[stockSymbol].Add(stockRate.Key, stockRate.Value);
-                }
+                //foreach (var stockRate in stockRates)
+                //{
+                //    _stockRatesFullHistory[stockSymbol].Add(stockRate.Key, stockRate.Value);
+                //}
             }
             else
             {
-                foreach (var stockRate in stockRates)
-                {
-                    _stockRatesFullHistory.Add(stockSymbol, stockRates);
-                    _stockRatesFullHistory[stockSymbol].Add(stockRate.Key, stockRate.Value);
-                }
+                _stockRatesFullHistory.Add(stockSymbol, stockRates);
             }
         }
     }

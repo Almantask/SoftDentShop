@@ -14,7 +14,7 @@ namespace SoftDentShop.Domain.Application.StockMonitor.Tests
         public void Deserialize_Stock_Ok()
         {
             var json = File.ReadAllText("SampleStock.json");
-            var stockRatesFull = JsonConvert.DeserializeObject<StockRatesFull>(json);
+            var stockRatesFull = JsonConvert.DeserializeObject<StockRateFull>(json);
             
             Assert.IsNotNull(stockRatesFull.StockRates);
         }
