@@ -43,7 +43,6 @@ namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
                 StockRateFull stocks = new StockRateFull();
                 if (response.IsSuccessStatusCode)
                 {
-
                     // What does content contain initially if not string?
                     var json = await response.Content.ReadAsStringAsync();
                     stocks = JsonConvert.DeserializeObject<StockRateFull>(json);

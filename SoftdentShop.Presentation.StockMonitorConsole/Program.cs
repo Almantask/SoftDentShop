@@ -23,10 +23,9 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
             //ThreadException += UnhandledExceptionTrapper;
             try
             {
-                
+                Console.WriteLine("Press any key to terminate");
                 _stockMonitoringRoutine = BuildStockMonitoringRoutine();
                 _stockMonitoringRoutine.Start();
-                Console.WriteLine("Press any key to terminate");
                 Console.ReadKey();
                 _stockMonitoringRoutine.Stop();
                 Console.WriteLine("Report terminated. Press any key to close app.");
