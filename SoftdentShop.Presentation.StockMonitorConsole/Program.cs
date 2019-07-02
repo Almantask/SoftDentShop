@@ -21,21 +21,15 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
             System.AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
             //ThreadException += UnhandledExceptionTrapper;
-            try
-            {
+
                 Console.WriteLine("Press any key to terminate");
                 _stockMonitoringRoutine = BuildStockMonitoringRoutine();
-                _stockMonitoringRoutine.Start();
+            _stockMonitoringRoutine.StartAsync();
                 Console.ReadKey();
                 _stockMonitoringRoutine.Stop();
                 Console.WriteLine("Report terminated. Press any key to close app.");
                 Console.ReadKey();
-            }
-            catch(AggregateException ex)
-            {
-                Console.WriteLine(ex.Message);
-                _stockMonitoringRoutine.Stop();
-            }
+
         }
 
         private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

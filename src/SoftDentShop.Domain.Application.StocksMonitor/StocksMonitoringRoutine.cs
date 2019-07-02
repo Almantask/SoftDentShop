@@ -47,7 +47,7 @@ namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
             _timeScale = timeScale;
         }
 
-        public async Task Start()
+        public async Task StartAsync()
         {
             ReportingStarted?.Invoke(this, new OnStockReportStartedEventArgs(DateTime.Now));
             if (_cancellationToken != null)
@@ -55,13 +55,7 @@ namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
                 throw new StockReportingAlreadyStartedException();
             }
             _cancellationToken = new CancellationTokenSource();
-            await PeriodicStockUpdateAsync(new TimeSpan(0, 0, 0, _timeScaleMapping[_timeScale] / 30), _cancellationToken.Token)
-                .ContinueWith(task =>
-                {
-                    if (task.IsCanceled)
-                        Console.WriteLine($"Report status: {task.Status}");
-                }
-            );
+            await PeriodicStockUpdateAsync(new TimeSpan(0, 0, 0, _timeScaleMapping[_timeScale] / 30), _cancellationToken.Token);
         }
 
         public void Stop()
@@ -76,8 +70,9 @@ namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
+                // How to cancel fully, immediatly
                 await LoadStockAsync();
-                await Task.Delay(interval);
+                await Task.Delay(interval, cancellationToken);
             };
         }
 

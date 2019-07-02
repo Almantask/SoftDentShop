@@ -8,7 +8,7 @@ namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
         event EventHandler<OnStockReportEndedEventArgs> ReportingEnded;
         event EventHandler<OnStockReportStartedEventArgs> ReportingStarted;
 
-        Task Start();
+        Task StartAsync();
         void Stop();
     }
 }
