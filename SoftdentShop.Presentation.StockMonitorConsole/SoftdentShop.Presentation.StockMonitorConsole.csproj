@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\SoftDentShop.Domain.Application.StocksMonitor\SoftDentShop.Domain.Application.StockMonitor.csproj" />
-    <ProjectReference Include="..\src\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.csproj" />
+    <ProjectReference Include="..\src\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.Core.csproj" />
   </ItemGroup>
 
 </Project>

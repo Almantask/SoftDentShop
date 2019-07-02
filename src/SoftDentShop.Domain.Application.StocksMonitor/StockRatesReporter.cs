@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoftDentShop.Domain.Application.StockMonitor
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
 {
     public class StockRatesReporter : IStockRatesReporter
     {

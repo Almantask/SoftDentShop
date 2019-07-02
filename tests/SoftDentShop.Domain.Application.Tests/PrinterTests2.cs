@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SoftDentShop.Domain.Application.Tests
+namespace SoftDentShop.Domain.ApplicationCore.Tests
 {
     [TestFixture]
     class PrinterTests2

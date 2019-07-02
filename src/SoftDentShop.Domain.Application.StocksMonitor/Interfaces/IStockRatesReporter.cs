@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SoftDentShop.Domain.Models.StockRates;
 
-namespace SoftDentShop.Domain.Application.StockMonitor
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
 {
     public interface IStockRatesReporter
     {

@@ -2,7 +2,7 @@ using Moq;
 using NUnit.Framework;
 using System.Linq;
 
-namespace SoftDentShop.Domain.Application.Tests
+namespace SoftDentShop.Domain.ApplicationCore.Tests
 {
     [TestFixture]
     public class PrinterTests

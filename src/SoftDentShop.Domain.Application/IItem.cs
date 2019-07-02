@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftDentShop.Domain.Application
+namespace SoftDentShop.Domain.ApplicationCore
 {
     interface IItem
     {

@@ -1,7 +1,8 @@
-﻿using SoftDentShop.Domain.Application;
-using SoftDentShop.Domain.Application.StockMonitor;
+﻿using SoftDentShop.Domain.ApplicationCore;
+using SoftDentShop.Domain.ApplicationCore.StockMonitor;
 using SoftDentShop.Presentation.Plain;
 using System;
+using System.Threading.Tasks;
 
 namespace SoftdentShop.Presentation.StockMonitorConsole
 {
@@ -18,9 +19,11 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
         static void Main(string[] args)
         {
             System.AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
-
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+            //ThreadException += UnhandledExceptionTrapper;
             try
             {
+                
                 _stockMonitoringRoutine = BuildStockMonitoringRoutine();
                 _stockMonitoringRoutine.Start();
                 Console.WriteLine("Press any key to terminate");
@@ -34,8 +37,13 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
                 Console.WriteLine(ex.Message);
                 _stockMonitoringRoutine.Stop();
             }
+        }
 
-            //CheckForStop();
+        private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            Console.WriteLine(e.Exception.ToString());
+            Console.WriteLine("Press Enter to continue");
+            Console.ReadLine();
         }
 
         private static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
@@ -43,15 +51,6 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
             Console.WriteLine(e.ExceptionObject.ToString());
             Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
-        }
-
-        private static void CheckForStop()
-        {
-            while (Console.ReadKey().Key != ConsoleKey.Escape)
-            {
-                Console.WriteLine("z");
-            }
-            _stockMonitoringRoutine.Stop();
         }
 
         private static IStocksMonitoringRoutine BuildStockMonitoringRoutine()

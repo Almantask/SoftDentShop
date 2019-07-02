@@ -1,4 +1,4 @@
-﻿namespace SoftDentShop.Domain.Application
+﻿namespace SoftDentShop.Domain.ApplicationCore
 {
     public interface ILogger
     {

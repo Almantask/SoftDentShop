@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoftDentShop.Domain.Application
+namespace SoftDentShop.Domain.ApplicationCore
 {
     public class AuctionFlow
     {

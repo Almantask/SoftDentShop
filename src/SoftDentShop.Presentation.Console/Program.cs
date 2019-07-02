@@ -1,5 +1,5 @@
-﻿using SoftDentShop.Domain.Application;
-using SoftDentShop.Domain.Application.Tests;
+﻿using SoftDentShop.Domain.ApplicationCore;
+using SoftDentShop.Domain.ApplicationCore.Tests;
 using System;
 
 namespace SoftDentShop.Presentation.Plain

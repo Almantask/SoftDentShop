@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace SoftDentShop.Domain.Application.StockMonitor.Tests
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor.Tests
 {
     [TestFixture]
     public class DeserializeStockTest

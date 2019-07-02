@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SoftDentShop.Domain.Application.Tests
+namespace SoftDentShop.Domain.ApplicationCore.Tests
 {
     public interface IPrinter
     {

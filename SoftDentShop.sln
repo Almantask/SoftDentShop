@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Reposit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B4C3AB75-32E5-4E2D-89BB-2D35526C21E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Application", "src\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.csproj", "{DB8C0A8E-BE72-46D7-BEAC-FAA1D161C3D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Application.Core", "src\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.Core.csproj", "{DB8C0A8E-BE72-46D7-BEAC-FAA1D161C3D7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Infrastructure.Repository", "src\SoftDentShop.Infrastructure.Repository\SoftDentShop.Infrastructure.Repository.csproj", "{B1019A5A-C8F6-4C9A-8A1D-7B3080FA8DB5}"
 EndProject
@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftDentShop.Domain.Application.Tests", "tests\SoftDentShop.Domain.Application.Tests\SoftDentShop.Domain.Application.Tests.csproj", "{9A390D93-9B3E-407A-A18B-1EC037C96D44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftdentShop.Presentation.StockMonitorConsole", "SoftdentShop.Presentation.StockMonitorConsole\SoftdentShop.Presentation.StockMonitorConsole.csproj", "{966851F7-8A85-48D2-A308-8515A0798C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftdentShop.Presentation.StockMonitorConsole", "SoftdentShop.Presentation.StockMonitorConsole\SoftdentShop.Presentation.StockMonitorConsole.csproj", "{966851F7-8A85-48D2-A308-8515A0798C33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

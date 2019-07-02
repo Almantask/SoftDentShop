@@ -1,4 +1,4 @@
-﻿using SoftDentShop.Domain.Application;
+﻿using SoftDentShop.Domain.ApplicationCore;
 
 namespace SoftDentShop.Presentation.Plain
 {

@@ -1,11 +1,11 @@
-﻿using SoftDentShop.Domain.Application.StockMonitor.Exceptions;
+﻿using SoftDentShop.Domain.ApplicationCore.StockMonitor.Exceptions;
 using SoftDentShop.Domain.Models.StockRates;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoftDentShop.Domain.Application.StockMonitor
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
 {
     public class StocksMonitoringRoutine : IStocksMonitoringRoutine
     {
@@ -66,7 +66,7 @@ namespace SoftDentShop.Domain.Application.StockMonitor
 
         public async Task PeriodicStockUpdateAsync(TimeSpan interval, CancellationTokenSource cancellationToken)
         {
-            while (true)
+            while (!cancellationToken.IsCancellationRequested)
             {
                 if (cancellationToken.IsCancellationRequested)
                     throw new OperationCanceledException();

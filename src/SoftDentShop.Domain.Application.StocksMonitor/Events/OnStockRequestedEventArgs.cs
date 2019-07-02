@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SoftDentShop.Domain.Application.StockMonitor
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor
 {
     public class OnStockRequestedEventArgs: EventArgs
     {

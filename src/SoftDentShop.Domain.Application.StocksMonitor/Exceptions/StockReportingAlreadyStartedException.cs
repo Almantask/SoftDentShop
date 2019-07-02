@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftDentShop.Domain.Application.StockMonitor.Exceptions
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor.Exceptions
 {
     public class StockReportingAlreadyStartedException: Exception
     {

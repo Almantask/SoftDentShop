@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SoftDentShop.Domain.Application.StockMonitor.Tests
+namespace SoftDentShop.Domain.ApplicationCore.StockMonitor.Tests
 {
     [TestFixture]
     public class StocksMonitorTests

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.csproj" />
+    <ProjectReference Include="..\SoftDentShop.Domain.Application\SoftDentShop.Domain.Application.Core.csproj" />
   </ItemGroup>
 
 </Project>
