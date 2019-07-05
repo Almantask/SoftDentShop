@@ -2,6 +2,7 @@
 using SoftDentShop.Domain.ApplicationCore.StockMonitor;
 using SoftDentShop.Presentation.Plain;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SoftdentShop.Presentation.StockMonitorConsole
@@ -18,6 +19,7 @@ namespace SoftdentShop.Presentation.StockMonitorConsole
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Started");
             System.AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
             //ThreadException += UnhandledExceptionTrapper;

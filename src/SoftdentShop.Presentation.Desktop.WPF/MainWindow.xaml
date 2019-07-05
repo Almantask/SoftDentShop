@@ -1,0 +1,15 @@
+﻿<Window x:Class="SoftdentShop.Presentation.Desktop.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoftdentShop.Presentation.Desktop.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="305,181,0,0" VerticalAlignment="Top" Width="167" Height="68" Click="Button_Click"/>
+        <Label Content="Label" Name="label1" HorizontalAlignment="Left" Margin="326,54,0,0" VerticalAlignment="Top" Height="56" Width="78"/>
+        <Label Content="Label" Name="label2" HorizontalAlignment="Left" Margin="326,110,0,0" VerticalAlignment="Top" Height="53" Width="120"/>
+
+    </Grid>
+</Window>
